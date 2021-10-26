@@ -1,4 +1,12 @@
-all :
-	gcc output_browser_pid.c -o output_browser_pid -Wall
-clean:
-	rm -f output_browser_pid
+FLAGS = -Wall
+SRC = *.c
+OBJ = *.o
+BIN = Cleaner
+
+$(BIN) : $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -o $(BIN)
+	rm $(OBJ)
+$(OBJ) : $(SRC)
+	$(CC) $(FLAGS) -c $(SRC)
+clean :
+	rm $(OBJ)
