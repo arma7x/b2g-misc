@@ -3,28 +3,44 @@
 #include <string.h>
 #include <stdbool.h>
 
+void reverse(char *strng) {
+    int len = strlen(strng);
+    for (int x=0;x<len/2;x++) {
+      char t = strng[x];
+      strng[x] = strng[len - 1 - x];
+      strng[len - 1 - x] = t; 
+    }
+}
+
 void show_pid(char *buffer)
 {
+    reverse(buffer);
     char *res;
     int idx = 0;
     int root = 0;
+    char *pid;
     while((res = strsep(&buffer, " ")) != NULL) {
-        if (! strlen(res)) {
+        if (! strlen(res))
+        {
             continue;
         }
-        if (idx == 2 && strcmp(res, "root") == 0)
+        if (idx == 8)
+        {
+          if (strcmp(res, "toor") == 0)
             root = 1;
-        if (idx == 3)
-            break;
+          break;
+        }
+        if (idx == 7)
+            pid = res;
         idx++;
     }
 
-    if (strlen(res) > 5)
-        res = (res + (strlen(res) - 5));
-    if (root == 0) {
+    if (root == 0)
+    {
         char str[80];
-        sprintf(str, "kill %s", res);
-        // printf("%d %s %s %d\n", root, res, str, strlen(res));
+        reverse(pid);
+        sprintf(str, "kill %s", pid);
+        // printf("%d %s %s %d\n", root, pid, str, strlen(pid));
         FILE *fp;
         fp = popen(str, "r");
         pclose(fp);
