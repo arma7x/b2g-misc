@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 void reverse(char *strng) {
     int len = strlen(strng);
-    for (int x=0;x<len/2;x++) {
-      char t = strng[x];
-      strng[x] = strng[len - 1 - x];
-      strng[len - 1 - x] = t; 
+    for (int x=0;x<len/2;x++)
+    {
+        char t = strng[x];
+        strng[x] = strng[len - 1 - x];
+        strng[len - 1 - x] = t; 
     }
 }
 
@@ -41,9 +41,7 @@ void show_pid(char *buffer)
         reverse(pid);
         sprintf(str, "kill %s", pid);
         // printf("%d %s %s %d\n", root, pid, str, strlen(pid));
-        FILE *fp;
-        fp = popen(str, "r");
-        pclose(fp);
+        system(str);
     }
 }
 
