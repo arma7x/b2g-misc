@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <sys/socket.h>
 #include <sys/un.h>
+#include <unistd.h>
 
 int main() {
 	int fd;
@@ -57,7 +58,7 @@ int main() {
 	}
 
 	if (fd >= 0) {
-		//close(fd);
+		close(fd);
 	}
 
 	return 0;
