@@ -1,7 +1,7 @@
 FLAGS = -Wall
-SRC = *.c
-OBJ = *.o
-BIN = Cleaner
+SRC = $(FILE).c
+OBJ = $(FILE).o
+BIN = $(FILE)
 
 $(BIN) : $(OBJ)
 	$(CC) $(FLAGS) $(OBJ) -o $(BIN)
